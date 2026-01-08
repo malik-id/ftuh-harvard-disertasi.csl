@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:style xmlns:ns0="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never" default-locale="id">
+  <ns0:info>
+    <ns0:title>Fakultas Teknik Universitas Hasanuddin - Pedoman Tesis &amp; Disertasi (Harvard, Bahasa Indonesia)</ns0:title>
+    <ns0:title-short>FTUH Harvard</ns0:title-short>
+    <ns0:id>http://www.zotero.org/styles/fakultas-teknik-unhas-harvard</ns0:id>
+    <ns0:link href="http://www.zotero.org/styles/fakultas-teknik-unhas-harvard" rel="self" />
+    <ns0:link href="http://www.zotero.org/styles/ecology-letters" rel="template" />
+    <ns0:author>
+      <ns0:name>Abdul Malik</ns0:name>
+      <ns0:email>malik@umegabuana.ac.id</ns0:email>
+    </ns0:author>
+    <ns0:category citation-format="author-date" />
+    <ns0:category field="science" />
+    <ns0:category field="chemistry" />
+    <ns0:updated>2025-11-20T13:45:35+00:00</ns0:updated>
+    <ns0:rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</ns0:rights>
+  <ns0:link href="/mnt/data/Pedoman Penulisan Tesis dan Disertasi FTUH 2023 Rev 01.pdf" rel="documentation" /></ns0:info>
+  <ns0:locale xml:lang="id">
+    <ns0:terms>
+      <ns0:term name="page" form="short">
+        <ns0:single>hal.</ns0:single>
+        <ns0:multiple>hal.</ns0:multiple>
+      </ns0:term>
+      <ns0:term name="retrieved">diakses</ns0:term>
+      <ns0:term name="from">dari</ns0:term>
+      <ns0:term name="accessed">diakses tanggal</ns0:term>
+      <ns0:term name="open-quote">‘</ns0:term>
+      <ns0:term name="close-quote">’</ns0:term>
+    </ns0:terms>
+  </ns0:locale>
+  <ns0:macro name="container">
+    <ns0:choose>
+      <ns0:if type="chapter paper-conference" match="any">
+        <ns0:group delimiter=", " prefix=", ">
+          <ns0:group delimiter=": ">
+            <ns0:text term="in" />
+            <ns0:names variable="editor translator" delimiter=", ">
+              <ns0:name name-as-sort-order="all" sort-separator=", " initialize-with="." and="text" delimiter=", " delimiter-precedes-last="contextual" />
+              <ns0:label plural="never" text-case="capitalize-first" prefix=" (" suffix=")" />
+            </ns0:names>
+          </ns0:group>
+          <ns0:text variable="container-title" text-case="title" font-style="italic" />
+          <ns0:text variable="collection-title" text-case="title" font-style="italic" />
+        </ns0:group>
+      </ns0:if>
+      <ns0:else-if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+        <ns0:group prefix=", " delimiter=", ">
+          <ns0:text variable="container-title" />
+          <ns0:text variable="collection-title" />
+        </ns0:group>
+      </ns0:else-if>
+      <ns0:else-if type="webpage post post-weblog" match="any">
+        <ns0:group prefix=" " delimiter=" ">
+          <ns0:text variable="container-title" form="long" font-style="italic" />
+          <ns0:text variable="collection-title" />
+        </ns0:group>
+      </ns0:else-if>
+      <ns0:else-if type="thesis" match="any">
+        <ns0:group prefix=" " delimiter=" ">
+          <ns0:text variable="container-title" form="long" font-style="italic" />
+          <ns0:text variable="collection-title" form="long" font-style="italic" />
+        </ns0:group>
+      </ns0:else-if>
+      <ns0:else>
+        <ns0:group prefix=". " delimiter=", ">
+          <ns0:text variable="container-title" font-style="italic" />
+          <ns0:text variable="collection-title" />
+        </ns0:group>
+      </ns0:else>
+    </ns0:choose>
+  </ns0:macro>
+  <ns0:macro name="author">
+    <ns0:names variable="author">
+      <ns0:name name-as-sort-order="all" sort-separator=", " initialize-with="." and="text" delimiter=", " delimiter-precedes-last="contextual" />
+      <ns0:label plural="never" text-case="capitalize-first" prefix=" (" suffix=")" />
+      <ns0:substitute>
+        <ns0:names variable="editor" />
+        <ns0:names variable="translator" />
+        <ns0:text macro="title" />
+      </ns0:substitute>
+    </ns0:names>
+  </ns0:macro>
+  <ns0:macro name="author-short">
+    <ns0:names variable="author">
+      <ns0:name form="short" and="text" delimiter=", " initialize-with=". " />
+      <ns0:substitute>
+        <ns0:names variable="editor" />
+        <ns0:names variable="translator" />
+        <ns0:choose>
+          <ns0:if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+            <ns0:text variable="title" form="short" font-style="italic" />
+          </ns0:if>
+          <ns0:else-if type="webpage post post-weblog" match="any">
+            <ns0:text variable="title" form="long" quotes="false" />
+          </ns0:else-if>
+          <ns0:else>
+            <ns0:text variable="title" form="long" quotes="true" />
+          </ns0:else>
+        </ns0:choose>
+      </ns0:substitute>
+    </ns0:names>
+  </ns0:macro>
+  <ns0:macro name="access">
+    <ns0:choose>
+      <ns0:if type="webpage post post-weblog">
+        <ns0:group delimiter=" ">
+          <ns0:text variable="URL" prefix="URL: " />
+          <ns0:group prefix=" (" suffix=").">
+            <ns0:text term="accessed" suffix=" " />
+            <ns0:date variable="accessed">
+              <ns0:date-part name="day" suffix="/" />
+              <ns0:date-part name="month" form="numeric" suffix="/" />
+              <ns0:date-part name="year" form="long" />
+            </ns0:date>
+          </ns0:group>
+        </ns0:group>
+      </ns0:if>
+    </ns0:choose>
+  </ns0:macro>
+  <ns0:macro name="title">
+    <ns0:choose>
+      <ns0:if type="report thesis patent webpage article-magazine article-newspaper paper-conference" match="any">
+        <ns0:group delimiter=". ">
+          <ns0:text variable="title" quotes="true" />
+          <ns0:text variable="genre" font-style="italic" />
+        </ns0:group>
+      </ns0:if>
+      <ns0:else-if type="bill book graphic legal_case legislation motion_picture report song speech" match="any">
+        <ns0:text variable="title" text-case="title" font-style="italic" />
+        <ns0:text macro="edition" prefix=", " />
+      </ns0:else-if>
+      <ns0:else-if type="webpage">
+        <ns0:group delimiter=" " suffix=" ">
+          <ns0:text variable="title" />
+          <ns0:text term="internet" font-style="italic" prefix="[" suffix="]" />
+        </ns0:group>
+      </ns0:else-if>
+      <ns0:else>
+        <ns0:text variable="title" />
+      </ns0:else>
+    </ns0:choose>
+  </ns0:macro>
+  <ns0:macro name="publisher">
+    <ns0:group delimiter=", ">
+      <ns0:text variable="publisher" />
+      <ns0:text variable="publisher-place" />
+    </ns0:group>
+  </ns0:macro>
+  <ns0:macro name="event">
+    <ns0:choose>
+      <ns0:if variable="event">
+        <ns0:group delimiter=" ">
+          <ns0:text term="presented at" text-case="capitalize-first" />
+          <ns0:text variable="event" />
+        </ns0:group>
+      </ns0:if>
+    </ns0:choose>
+  </ns0:macro>
+  <ns0:macro name="issued">
+    <ns0:choose>
+      <ns0:if variable="issued">
+        <ns0:date variable="issued">
+          <ns0:date-part name="year" />
+        </ns0:date>
+      </ns0:if>
+      <ns0:else>
+        <ns0:text term="no date" form="short" />
+      </ns0:else>
+    </ns0:choose>
+  </ns0:macro>
+  <ns0:macro name="edition">
+    <ns0:choose>
+      <ns0:if is-numeric="edition">
+        <ns0:group delimiter=" ">
+          <ns0:number variable="edition" form="ordinal" />
+          <ns0:label variable="edition" form="short" />
+        </ns0:group>
+      </ns0:if>
+      <ns0:else>
+        <ns0:text variable="edition" suffix="." />
+      </ns0:else>
+    </ns0:choose>
+  </ns0:macro>
+  <ns0:macro name="locators">
+    <ns0:choose><ns0:if type="article-journal article-magazine article-newspaper" match="any"><ns0:group delimiter="" prefix=", "><ns0:text variable="volume" /><ns0:choose><ns0:if variable="issue"><ns0:text variable="issue" prefix="(" suffix=")" /></ns0:if></ns0:choose><ns0:text variable="page" prefix=", " /></ns0:group></ns0:if><ns0:else-if type="bill book graphic legal_case legislation motion_picture report song thesis" match="any"><ns0:group delimiter=", " prefix=", "><ns0:text macro="event" /><ns0:text macro="publisher" /></ns0:group></ns0:else-if><ns0:else-if type="chapter paper-conference" match="any"><ns0:group delimiter=", " prefix=", "><ns0:text macro="event" /><ns0:text macro="publisher" /><ns0:group delimiter=" "><ns0:label variable="page" form="short" /><ns0:text variable="page" /></ns0:group></ns0:group></ns0:else-if><ns0:else-if type="patent"><ns0:group delimiter=" "><ns0:text term="patent" font-style="italic" prefix=" [" suffix="]" /><ns0:text variable="number" /></ns0:group></ns0:else-if></ns0:choose></ns0:macro>
+  <ns0:citation et-al-min="3" et-al-use-first="1" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true" collapse="year" cite-group-delimiter=", ">
+    <ns0:sort>
+      <ns0:key macro="author" />
+      <ns0:key macro="issued" sort="descending" />
+    </ns0:sort>
+    <ns0:layout prefix="(" suffix=")" delimiter="; ">
+      <ns0:group delimiter=", ">
+        <ns0:text macro="author-short" />
+        <ns0:text macro="issued" />
+        <ns0:group delimiter=" ">
+          <ns0:label variable="locator" form="short" />
+          <ns0:text variable="locator" />
+        </ns0:group>
+      </ns0:group>
+    </ns0:layout>
+  </ns0:citation>
+  <ns0:bibliography hanging-indent="true" et-al-min="7" et-al-use-first="6" entry-spacing="1" line-spacing="1">
+    <ns0:sort>
+      <ns0:key macro="author" />
+      <ns0:key macro="issued" sort="ascending" />
+    </ns0:sort>
+    <ns0:layout suffix="">
+      <ns0:group delimiter=", "><ns0:text macro="author" /><ns0:text macro="issued" prefix="(" suffix=")" /><ns0:text macro="title" /><ns0:text macro="container" /><ns0:text macro="locators" /></ns0:group><ns0:text macro="access" prefix=", " /></ns0:layout>
+  </ns0:bibliography>
+</ns0:style>
