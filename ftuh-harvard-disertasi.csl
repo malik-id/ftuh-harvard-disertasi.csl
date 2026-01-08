@@ -15,7 +15,8 @@
     <ns0:category field="chemistry" />
     <ns0:updated>2025-11-20T13:45:35+00:00</ns0:updated>
     <ns0:rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</ns0:rights>
-  <ns0:link href="/mnt/data/Pedoman Penulisan Tesis dan Disertasi FTUH 2023 Rev 01.pdf" rel="documentation" /></ns0:info>
+    <ns0:link href="/mnt/data/Pedoman Penulisan Tesis dan Disertasi FTUH 2023 Rev 01.pdf" rel="documentation" />
+  </ns0:info>
   <ns0:locale xml:lang="id">
     <ns0:terms>
       <ns0:term name="page" form="short">
@@ -27,6 +28,7 @@
       <ns0:term name="accessed">diakses tanggal</ns0:term>
       <ns0:term name="open-quote">‘</ns0:term>
       <ns0:term name="close-quote">’</ns0:term>
+      <ns0:term name="et-al">dkk.</ns0:term>
     </ns0:terms>
   </ns0:locale>
   <ns0:macro name="container">
@@ -63,7 +65,7 @@
         </ns0:group>
       </ns0:else-if>
       <ns0:else>
-        <ns0:group prefix=". " delimiter=", ">
+        <ns0:group prefix="" delimiter=", ">
           <ns0:text variable="container-title" font-style="italic" />
           <ns0:text variable="collection-title" />
         </ns0:group>
@@ -122,7 +124,7 @@
     <ns0:choose>
       <ns0:if type="report thesis patent webpage article-magazine article-newspaper paper-conference" match="any">
         <ns0:group delimiter=". ">
-          <ns0:text variable="title" quotes="true" />
+          <ns0:text variable="title" />
           <ns0:text variable="genre" font-style="italic" />
         </ns0:group>
       </ns0:if>
@@ -183,7 +185,42 @@
     </ns0:choose>
   </ns0:macro>
   <ns0:macro name="locators">
-    <ns0:choose><ns0:if type="article-journal article-magazine article-newspaper" match="any"><ns0:group delimiter="" prefix=", "><ns0:text variable="volume" /><ns0:choose><ns0:if variable="issue"><ns0:text variable="issue" prefix="(" suffix=")" /></ns0:if></ns0:choose><ns0:text variable="page" prefix=", " /></ns0:group></ns0:if><ns0:else-if type="bill book graphic legal_case legislation motion_picture report song thesis" match="any"><ns0:group delimiter=", " prefix=", "><ns0:text macro="event" /><ns0:text macro="publisher" /></ns0:group></ns0:else-if><ns0:else-if type="chapter paper-conference" match="any"><ns0:group delimiter=", " prefix=", "><ns0:text macro="event" /><ns0:text macro="publisher" /><ns0:group delimiter=" "><ns0:label variable="page" form="short" /><ns0:text variable="page" /></ns0:group></ns0:group></ns0:else-if><ns0:else-if type="patent"><ns0:group delimiter=" "><ns0:text term="patent" font-style="italic" prefix=" [" suffix="]" /><ns0:text variable="number" /></ns0:group></ns0:else-if></ns0:choose></ns0:macro>
+    <ns0:choose>
+      <ns0:if type="article-journal article-magazine article-newspaper" match="any">
+        <ns0:group delimiter="" prefix=", ">
+          <ns0:text variable="volume" />
+          <ns0:choose>
+            <ns0:if variable="issue">
+              <ns0:text variable="issue" prefix="(" suffix=")" />
+            </ns0:if>
+          </ns0:choose>
+          <ns0:text variable="page" prefix=", " />
+        </ns0:group>
+      </ns0:if>
+      <ns0:else-if type="bill book graphic legal_case legislation motion_picture report song thesis" match="any">
+        <ns0:group delimiter=", " prefix=", ">
+          <ns0:text macro="event" />
+          <ns0:text macro="publisher" />
+        </ns0:group>
+      </ns0:else-if>
+      <ns0:else-if type="chapter paper-conference" match="any">
+        <ns0:group delimiter=", " prefix=", ">
+          <ns0:text macro="event" />
+          <ns0:text macro="publisher" />
+          <ns0:group delimiter=" ">
+            <ns0:label variable="page" form="short" />
+            <ns0:text variable="page" />
+          </ns0:group>
+        </ns0:group>
+      </ns0:else-if>
+      <ns0:else-if type="patent">
+        <ns0:group delimiter=" ">
+          <ns0:text term="patent" font-style="italic" prefix=" [" suffix="]" />
+          <ns0:text variable="number" />
+        </ns0:group>
+      </ns0:else-if>
+    </ns0:choose>
+  </ns0:macro>
   <ns0:citation et-al-min="3" et-al-use-first="1" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true" collapse="year" cite-group-delimiter=", ">
     <ns0:sort>
       <ns0:key macro="author" />
@@ -206,6 +243,14 @@
       <ns0:key macro="issued" sort="ascending" />
     </ns0:sort>
     <ns0:layout suffix="">
-      <ns0:group delimiter=", "><ns0:text macro="author" /><ns0:text macro="issued" prefix="(" suffix=")" /><ns0:text macro="title" /><ns0:text macro="container" /><ns0:text macro="locators" /></ns0:group><ns0:text macro="access" prefix=", " /></ns0:layout>
+      <ns0:group delimiter=", ">
+        <ns0:text macro="author" />
+        <ns0:text macro="issued" prefix="(" suffix=")" />
+        <ns0:text macro="title" />
+        <ns0:text macro="container" />
+        <ns0:text macro="locators" />
+      </ns0:group>
+      <ns0:text macro="access" prefix=", " />
+    </ns0:layout>
   </ns0:bibliography>
 </ns0:style>
